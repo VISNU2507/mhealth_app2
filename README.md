@@ -21,7 +21,7 @@ DV Health is a comprehensive fitness app designed to facilitate athletes and fit
 
 #### View
 - `athlete_list_page.dart`: This file defines the AthleteListPage widget, which displays a list of athletes. Each athlete is represented as an AthleteTile, and you can navigate to the login page for each athlete.
-- 
+  
 - `exercise_options_page.dart`: In this file, you'll find the ExerciseOption widget, which allows users to select exercise options based on the connected device. It also handles the start and end of workouts.
   
 - `HR_data_page.dart`: This file defines the HRDataPage widget, which is intended to display heart rate data. However, it appears to be incomplete and doesn't contain specific functionality.
@@ -31,7 +31,7 @@ DV Health is a comprehensive fitness app designed to facilitate athletes and fit
 - `login_page.dart`: This file contains the LoginPage widget, which is used for user login. Users enter a PIN code, and if it matches the login code, they are navigated to the options page.
   
 - `options_page.dart`: The OptionsPage widget is defined here. It serves as a central hub for navigating to different sections of the app, such as sessions, heart rate data, and links.
-- 
+  
 - `ScanWidget.dart`: This file defines the ScanWidget widget, which is responsible for scanning and connecting to devices. It lists available devices and allows users to start or stop scanning.
 
 #### View_model
