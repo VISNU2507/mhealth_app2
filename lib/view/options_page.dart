@@ -12,7 +12,9 @@ class OptionsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xFF15A196),
-        title: Text('Welcome back!'),
+        title: Text('''
+         Welcome back
+    Glad to have you back'''),
       ),
       body: Container(
         color: Color(0xFF15A196),

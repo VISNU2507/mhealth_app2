@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../model/Device.dart';
-import 'DeviceModel.dart';
+import '../view_model/DeviceViewModel.dart';
 import '../view_model/AppModel.dart';
 import 'options_page.dart';
 
