@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mhealth_app1/view_model/DeviceViewModel.dart';
 import 'HR_data_page.dart';
 import 'link_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -44,7 +45,13 @@ class OptionsPage extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => HRDataPage()),
+                    MaterialPageRoute(
+                      builder: (context) => ChangeNotifierProvider(
+                        create: (_) => DeviceViewModel('Name of Device',
+                            'Serial Number'), // Provide values for _name and _serial here
+                        child: HRDataPage(),
+                      ),
+                    ),
                   );
                 },
               ),

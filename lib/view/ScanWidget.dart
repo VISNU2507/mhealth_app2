@@ -14,19 +14,25 @@ class ScanWidget extends StatefulWidget {
 
 class _ScanWidgetState extends State<ScanWidget> {
   late AppModel model;
+  bool isLoading = false; // New state to track loading for a device
 
   @override
   void initState() {
-    // initialiserer platform state dernede
     super.initState();
     initPlatformState();
     model = Provider.of<AppModel>(context, listen: false);
-    model.onDeviceMdsConnected((device) => Navigator.push(context,
-        MaterialPageRoute(builder: (context) => ExerciseOption(device))));
+    model.onDeviceMdsConnected((device) {
+      if (mounted) {
+        setState(() {
+          isLoading = false; // Stop loading when device is connected
+        });
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => ExerciseOption(device)));
+      }
+    });
   }
 
   Future<void> initPlatformState() async {
-    // asynkront spørger om permissions for bluetooth funktionalitet, husk android indstillinger ændring skal laves.
     if (!mounted) return;
 
     Map<Permission, PermissionStatus> statuses = await [
@@ -38,23 +44,31 @@ class _ScanWidgetState extends State<ScanWidget> {
   }
 
   Widget _buildDeviceItem(BuildContext context, int index) {
-    // en ui card for devices
     return Card(
       child: ListTile(
-        title: Text(model.deviceList[index].name!),
-        subtitle: Text(model.deviceList[index].address!),
-        trailing: Text(model.deviceList[index].connectionStatus.statusName),
-        onTap: () => model.connectToDevice(model.deviceList[index]),
+        title: Text(model.deviceList[index].name ?? 'Unknown Device'),
+        subtitle: Text(model.deviceList[index].address ?? 'No Address'),
+        trailing: isLoading
+            ? CircularProgressIndicator()
+            : Text(model.deviceList[index].connectionStatus.statusName),
+        onTap: () {
+          setState(() {
+            isLoading = true; // Start loading when a device is tapped
+          });
+          model.connectToDevice(model.deviceList[index]);
+        },
       ),
     );
   }
 
   Widget _buildDeviceList(List<Device> deviceList) {
-    return new Expanded(
-        child: new ListView.builder(
-            itemCount: model.deviceList.length,
-            itemBuilder: (BuildContext context, int index) =>
-                _buildDeviceItem(context, index)));
+    return Expanded(
+      child: ListView.builder(
+        itemCount: model.deviceList.length,
+        itemBuilder: (BuildContext context, int index) =>
+            _buildDeviceItem(context, index),
+      ),
+    );
   }
 
   void onScanButtonPressed() {
@@ -70,10 +84,10 @@ class _ScanWidgetState extends State<ScanWidget> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Scanning devices'),
-        backgroundColor: Color(0xFF15A196), // color AppBar
+        backgroundColor: Color(0xFF15A196),
       ),
       body: Container(
-        color: Color(0xFF15A196), //  color the bodyen
+        color: Color(0xFF15A196),
         child: Consumer<AppModel>(
           builder: (context, model, child) {
             return Column(
@@ -82,12 +96,12 @@ class _ScanWidgetState extends State<ScanWidget> {
                 ElevatedButton(
                   onPressed: onScanButtonPressed,
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.white, // Button background color
-                    onPrimary: Colors.black, // Butto text color
+                    primary: Colors.white,
+                    onPrimary: Colors.black,
                   ),
                   child: Text(model.scanButtonText),
                 ),
-                _buildDeviceList(model.deviceList)
+                _buildDeviceList(model.deviceList),
               ],
             );
           },

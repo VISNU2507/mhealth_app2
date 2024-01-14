@@ -44,6 +44,8 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   mdsflutter: ^2.0.0
+  shared_preferences: ^2.2.2
+  fl_chart: ^0.65.0
     # When depending on this package from a real application you should use:
     #   mdsflutter: ^x.y.z
     # See https://dart.dev/tools/pub/dependencies#version-constraints
