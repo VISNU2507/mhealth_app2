@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:mhealth_app1/view_model/DeviceViewModel.dart';
+import 'package:mhealth_app1/view_model/DeviceHRViewModel.dart';
 import 'HR_data_page.dart';
 import 'link_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
-import '../view_model/AppModel.dart';
+import '../view_model/DeviceScanViewModel.dart';
 import 'package:mhealth_app1/view/ScanWidget.dart';
 
 class OptionsPage extends StatelessWidget {
@@ -31,7 +31,7 @@ class OptionsPage extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                         builder: (context) => ChangeNotifierProvider(
-                              create: (context) => AppModel(),
+                              create: (context) => DeviceScanViewModel(),
                               child: MaterialApp(
                                 home: ScanWidget(),
                               ),
@@ -47,7 +47,7 @@ class OptionsPage extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder: (context) => ChangeNotifierProvider(
-                        create: (_) => DeviceViewModel('Name of Device',
+                        create: (_) => DeviceHRViewModel('Name of Device',
                             'Serial Number'), // Provide values for _name and _serial here
                         child: HRDataPage(),
                       ),

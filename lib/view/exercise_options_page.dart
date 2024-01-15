@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../model/Device.dart';
-import '../view_model/DeviceViewModel.dart';
-import '../view_model/AppModel.dart';
+import '../view_model/DeviceHRViewModel.dart';
+import '../view_model/DeviceScanViewModel.dart';
 import 'options_page.dart';
 
 class ExerciseOption extends StatefulWidget {
@@ -17,13 +17,13 @@ class ExerciseOption extends StatefulWidget {
 }
 
 class ExerciseOptionsPage extends State<ExerciseOption> {
-  late AppModel _appModel;
+  late DeviceScanViewModel _appModel;
 
   @override
   void initState() {
     // on initialization (iinit), får den instance af appmodel from provvider.of
     super.initState();
-    _appModel = Provider.of<AppModel>(context, listen: false);
+    _appModel = Provider.of<DeviceScanViewModel>(context, listen: false);
     _appModel.onDeviceMdsDisconnected(
         (device) => Navigator.pop(context)); // navigator back til current page
   }
@@ -97,12 +97,12 @@ class _ExerciseCardState extends State<ExerciseCard> {
   bool isWorkoutStarted = false;
   String hrData = "No data"; // Variable to hold HR data
 
-  void startWorkout(DeviceViewModel deviceModel) {
+  void startWorkout(DeviceHRViewModel deviceModel) {
     setState(() {
       isWorkoutStarted = true;
     });
     deviceModel.subscribeToHr();
-    // Listen to HR data updates
+    // listening to HR data updates
     deviceModel.addListener(() {
       setState(() {
         hrData = deviceModel.hrData; // Update HR data on UI
@@ -110,7 +110,7 @@ class _ExerciseCardState extends State<ExerciseCard> {
     });
   }
 
-  void endWorkout(DeviceViewModel deviceModel) {
+  void endWorkout(DeviceHRViewModel deviceModel) {
     setState(() {
       isWorkoutStarted = false;
       hrData = "No data"; // Reset HR data display
@@ -122,8 +122,8 @@ class _ExerciseCardState extends State<ExerciseCard> {
   Widget build(BuildContext context) {
     Device device = widget.device;
     return ChangeNotifierProvider(
-      create: (context) => DeviceViewModel(device.name, device.serial),
-      child: Consumer<DeviceViewModel>(
+      create: (context) => DeviceHRViewModel(device.name, device.serial),
+      child: Consumer<DeviceHRViewModel>(
         builder: (context, deviceModel, child) {
           return Card(
             margin: EdgeInsets.all(8.0),

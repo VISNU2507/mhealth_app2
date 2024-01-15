@@ -7,7 +7,7 @@ import '../model/Device.dart';
 import 'package:mdsflutter/Mds.dart';
 import '../model/DeviceConnectionStatus.dart';
 
-class AppModel extends ChangeNotifier {
+class DeviceScanViewModel extends ChangeNotifier {
   final Set<Device> _deviceList = Set();
   bool _isScanning = false;
   void Function(Device)? _onDeviceMdsConnectedCb;

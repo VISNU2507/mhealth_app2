@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import '../model/Device.dart';
 import '../model/DeviceConnectionStatus.dart';
-import '../view_model/AppModel.dart';
+import '../view_model/DeviceScanViewModel.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 import 'exercise_options_page.dart';
@@ -13,14 +13,14 @@ class ScanWidget extends StatefulWidget {
 }
 
 class _ScanWidgetState extends State<ScanWidget> {
-  late AppModel model;
+  late DeviceScanViewModel model;
   bool isLoading = false; // New state to track loading for a device
 
   @override
   void initState() {
     super.initState();
     initPlatformState();
-    model = Provider.of<AppModel>(context, listen: false);
+    model = Provider.of<DeviceScanViewModel>(context, listen: false);
     model.onDeviceMdsConnected((device) {
       if (mounted) {
         setState(() {
@@ -62,6 +62,7 @@ class _ScanWidgetState extends State<ScanWidget> {
   }
 
   Widget _buildDeviceList(List<Device> deviceList) {
+    //hey
     return Expanded(
       child: ListView.builder(
         itemCount: model.deviceList.length,
@@ -88,7 +89,7 @@ class _ScanWidgetState extends State<ScanWidget> {
       ),
       body: Container(
         color: Color(0xFF15A196),
-        child: Consumer<AppModel>(
+        child: Consumer<DeviceScanViewModel>(
           builder: (context, model, child) {
             return Column(
               mainAxisSize: MainAxisSize.min,

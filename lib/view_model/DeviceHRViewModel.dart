@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:mdsflutter/Mds.dart';
-// mamager data og state for af specifik device, focusing on subscribing and handling heart rate
+// manager data og state for af specifik device, focusing on subscribing and handling heart rate
 
-class DeviceViewModel extends ChangeNotifier {
+class DeviceHRViewModel extends ChangeNotifier {
   String? _serial;
   String? _name;
 
@@ -15,7 +15,15 @@ class DeviceViewModel extends ChangeNotifier {
   String get hrData => _hrData;
   bool get hrSubscribed => _hrSubscription != null; //returner bool
 
-  DeviceViewModel(this._name, this._serial);
+  DeviceHRViewModel(this._name, this._serial);
+
+  void _onNewHrData(dynamic hrData) {
+    Map<String, dynamic> body = hrData["Body"];
+    double hr = body["average"];
+    _hrData = hr.toStringAsFixed(1) + " bpm";
+    notifyListeners();
+    print(_hrData);
+  }
 
   void subscribeToHr() {
     _hrData = "";
@@ -25,14 +33,6 @@ class DeviceViewModel extends ChangeNotifier {
       _onNewHrData(event);
     });
     notifyListeners(); //notifier alle listeners
-    print(_hrData);
-  }
-
-  void _onNewHrData(dynamic hrData) {
-    Map<String, dynamic> body = hrData["Body"];
-    double hr = body["average"];
-    _hrData = hr.toStringAsFixed(1) + " bpm";
-    notifyListeners();
     print(_hrData);
   }
 
