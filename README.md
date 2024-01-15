@@ -35,9 +35,9 @@ DV Health is a comprehensive fitness app designed to facilitate athletes and fit
 - `ScanWidget.dart`: This file defines the ScanWidget widget, which is responsible for scanning and connecting to devices. It lists available devices and allows users to start or stop scanning.
 
 #### View_model
-- `DeviceScanViewModel.dart`: The AppModel class manages the app's overall state, including the list of devices, scanning status, and device connections.
+- `DeviceScanViewModel.dart`: The DeviceScanViewModel class manages the app's overall state, including the list of devices, scanning status, and device connections.
   
-- `DeviceHRViewModel.dart`: Similar to DeviceModel, the DeviceViewModel class manages data and state for a specific device, emphasizing heart rate data subscription and handling.
+- `DeviceHRViewModel.dart`: Similar to DeviceScanViewModel, the DeviceHRViewModel.dart class manages data and state for a specific device, emphasizing heart rate data subscription and handling.
 
 ### Entry Point
 - `main.dart`: The main.dart file serves as the entry point for the app. It defines the main MyApp widget, which initializes the app's theme and starts on the home page.
