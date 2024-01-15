@@ -40,12 +40,16 @@ class LoginPage extends StatelessWidget {
                 backgroundColor: const Color(0xFFAFDFDB),
               ),
               onPressed: () {
-                if (pinController.text == loginCode) {
+                // Check if the entered pin is correct for the athlete or if it's the coach's key
+                if (pinController.text == loginCode ||
+                    pinController.text == '12') {
+                  // Navigate to the options page if the pin is correct
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => OptionsPage()),
                   );
                 } else {
+                  // Show an error if the pin is incorrect
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
                       content: Text('Incorrect pin code entered',

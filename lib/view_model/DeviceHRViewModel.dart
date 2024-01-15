@@ -10,12 +10,12 @@ class DeviceHRViewModel extends ChangeNotifier {
   String? get name => _name;
   String? get serial => _serial;
 
+  DeviceHRViewModel(this._name, this._serial);
+
   StreamSubscription? _hrSubscription;
   String _hrData = ""; // store latest heartrate
   String get hrData => _hrData;
   bool get hrSubscribed => _hrSubscription != null; //returner bool
-
-  DeviceHRViewModel(this._name, this._serial);
 
   void _onNewHrData(dynamic hrData) {
     Map<String, dynamic> body = hrData["Body"];

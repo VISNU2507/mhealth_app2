@@ -1,6 +1,6 @@
 import 'DeviceConnectionStatus.dart';
 
-// indkapsler data og status af en device dejdnejde
+// indkapsler data og status af en device (generel)
 class Device {
   // store device adress, name og serial
   String? _address;
