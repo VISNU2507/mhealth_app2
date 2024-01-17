@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'view/Athletes_view.dart';
-import '../model/HRstorage.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 void main() {

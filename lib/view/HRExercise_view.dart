@@ -97,11 +97,11 @@ class _ExerciseCardState extends State<ExerciseCard> {
   bool isWorkoutStarted = false;
   String hrData = "No data"; // Variable to hold HR data
 
-  void startWorkout(HRViewModel deviceModel) {
+  void startWorkout(HRViewModel deviceModel, String workout) {
     setState(() {
       isWorkoutStarted = true;
     });
-    // deviceModel.init();
+    deviceModel.initStorage(workout);
     deviceModel.subscribeToHr();
     // listening to HR data updates
     deviceModel.addListener(() {
@@ -177,7 +177,8 @@ class _ExerciseCardState extends State<ExerciseCard> {
                       ElevatedButton.icon(
                         icon: Icon(Icons.play_arrow, color: Colors.white),
                         label: Text('Start Workout'),
-                        onPressed: () => startWorkout(deviceModel),
+                        onPressed: () =>
+                            startWorkout(deviceModel, widget.exerciseName),
                         style: ElevatedButton.styleFrom(
                           primary: Colors.green, // background color
                           onPrimary: Colors.white, // foreground color

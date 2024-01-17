@@ -27,7 +27,7 @@ class OptionsViewModel {
         builder: (context) => ChangeNotifierProvider(
           create: (_) => HRViewModel('Name of Device',
               'Serial Number'), // Provide actual values for _name and _serial here
-          child: HRStoragePage(),
+          child: HRStorageView(),
         ),
       ),
     );
