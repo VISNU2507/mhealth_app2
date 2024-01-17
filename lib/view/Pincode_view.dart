@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'options_page.dart';
+import 'Options_view.dart';
+import '../view_model/PincodeViewModel.dart';
 
-class LoginPage extends StatelessWidget {
-  final String loginCode;
-  final TextEditingController pinController = TextEditingController();
+class PinCode extends StatelessWidget {
+  final PincodeViewModel viewModel;
 
-  LoginPage({super.key, required this.loginCode});
+  PinCode({super.key, required String loginCode})
+      : viewModel = PincodeViewModel(loginCode);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,7 @@ class LoginPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             TextField(
-              controller: pinController,
+              controller: viewModel.pinController,
               decoration: InputDecoration(
                 filled: true,
                 fillColor: Colors.white,
@@ -40,16 +41,15 @@ class LoginPage extends StatelessWidget {
                 backgroundColor: const Color(0xFFAFDFDB),
               ),
               onPressed: () {
-                // Check if the entered pin is correct for the athlete or if it's the coach's key
-                if (pinController.text == loginCode ||
-                    pinController.text == '12') {
-                  // Navigate to the options page if the pin is correct
+// Utilize the ViewModel to check the pin
+                if (viewModel.isPinCorrect(viewModel.pinController.text)) {
+// Navigate to the options page if the pin is correct
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => OptionsPage()),
                   );
                 } else {
-                  // Show an error if the pin is incorrect
+// Show an error if the pin is incorrect
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
                       content: Text('Incorrect pin code entered',

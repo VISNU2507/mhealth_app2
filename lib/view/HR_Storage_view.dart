@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class HRDataPage extends StatelessWidget {
+class HRStoragePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

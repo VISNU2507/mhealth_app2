@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../view/athlete_list_page.dart';
+import 'view/Athletes_view.dart';
+import '../model/HRstorage.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 void main() {
@@ -56,8 +57,7 @@ class HomePage extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                      builder: (context) => const AthleteListPage()),
+                  MaterialPageRoute(builder: (context) => AthleteListView()),
                 );
               },
               child: const Text('Begin training'),

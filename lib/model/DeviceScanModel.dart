@@ -1,7 +1,7 @@
 import 'DeviceConnectionStatus.dart';
 
 // indkapsler data og status af en device (generel)
-class Device {
+class DeviceScan {
   // store device adress, name og serial
   String? _address;
   String? _name;
@@ -9,7 +9,7 @@ class Device {
   DeviceConnectionStatus _connectionStatus =
       DeviceConnectionStatus.NOT_CONNECTED;
 
-  Device(String? name, String? address) {
+  DeviceScan(String? name, String? address) {
     // constructor der initalize det  dér ovenover
     _name = name;
     _address = address;
@@ -31,6 +31,6 @@ class Device {
       _connectionStatus = DeviceConnectionStatus.NOT_CONNECTED;
 
   bool operator ==(o) => //comparer devices
-      o is Device && o._address == _address && o._name == _name;
+      o is DeviceScan && o._address == _address && o._name == _name;
   int get hashCode => _address.hashCode * _name.hashCode;
 } // retunrer hash code for device

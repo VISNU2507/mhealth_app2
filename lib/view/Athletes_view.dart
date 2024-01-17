@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'login_page.dart';
+import 'package:mhealth_app1/view_model/AthleteViewModel.dart';
+import 'Pincode_view.dart';
 
-class AthleteListPage extends StatelessWidget {
-  const AthleteListPage({super.key});
+class AthleteListView extends StatelessWidget {
+  final AthleteListViewModel viewModel = AthleteListViewModel();
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +20,13 @@ class AthleteListPage extends StatelessWidget {
       ),
       body: Container(
         color: Color(0xFF15A196),
-        child: ListView(
-          children: <Widget>[
-            AthleteTile(athleteName: 'Athlete 1', loginCode: '1234'),
-            AthleteTile(athleteName: 'Athlete 2', loginCode: '4321'),
-          ],
+        child: ListView.builder(
+          itemCount: viewModel.athletes.length,
+          itemBuilder: (context, index) {
+            final athlete = viewModel.athletes[index];
+            return AthleteTile(
+                athleteName: athlete.name, loginCode: athlete.loginCode);
+          },
         ),
       ),
     );
@@ -49,7 +52,7 @@ class AthleteTile extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => LoginPage(loginCode: loginCode)),
+                  builder: (context) => PinCode(loginCode: loginCode)),
             );
           },
         ),

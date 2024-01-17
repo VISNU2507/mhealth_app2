@@ -1,11 +1,11 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import '../model/Device.dart';
+import '../model/DeviceScanModel.dart';
 import '../model/DeviceConnectionStatus.dart';
 import '../view_model/DeviceScanViewModel.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
-import 'exercise_options_page.dart';
+import 'HRExercise_view.dart';
 
 class ScanWidget extends StatefulWidget {
   @override
@@ -61,7 +61,7 @@ class _ScanWidgetState extends State<ScanWidget> {
     );
   }
 
-  Widget _buildDeviceList(List<Device> deviceList) {
+  Widget _buildDeviceList(List<DeviceScan> deviceList) {
     //hey
     return Expanded(
       child: ListView.builder(

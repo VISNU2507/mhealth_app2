@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../model/Device.dart';
-import '../view_model/DeviceHRViewModel.dart';
+import '../model/DeviceScanModel.dart';
+import '../view_model/HRExerciseViewModel.dart';
 import '../view_model/DeviceScanViewModel.dart';
-import 'options_page.dart';
+import 'Options_view.dart';
 
 class ExerciseOption extends StatefulWidget {
   // tager en Device objekt som en parameter
-  final Device device;
+  final DeviceScan device;
   const ExerciseOption(this.device);
 
   @override
@@ -21,7 +21,7 @@ class ExerciseOptionsPage extends State<ExerciseOption> {
 
   @override
   void initState() {
-    // on initialization (iinit), får den instance af appmodel from provvider.of
+    // on initialization (init), får den instance af appmodel from provvider.of
     super.initState();
     _appModel = Provider.of<DeviceScanViewModel>(context, listen: false);
     _appModel.onDeviceMdsDisconnected(
@@ -37,7 +37,7 @@ class ExerciseOptionsPage extends State<ExerciseOption> {
 
   @override
   Widget build(BuildContext context) {
-    Device device = widget.device;
+    DeviceScan device = widget.device;
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -80,7 +80,7 @@ class ExerciseOptionsPage extends State<ExerciseOption> {
 class ExerciseCard extends StatefulWidget {
   final String exerciseName;
   final List<String> dataFields;
-  final Device device;
+  final DeviceScan device;
 
   ExerciseCard({
     required this.exerciseName,
@@ -97,10 +97,11 @@ class _ExerciseCardState extends State<ExerciseCard> {
   bool isWorkoutStarted = false;
   String hrData = "No data"; // Variable to hold HR data
 
-  void startWorkout(DeviceHRViewModel deviceModel) {
+  void startWorkout(HRViewModel deviceModel) {
     setState(() {
       isWorkoutStarted = true;
     });
+    // deviceModel.init();
     deviceModel.subscribeToHr();
     // listening to HR data updates
     deviceModel.addListener(() {
@@ -110,7 +111,7 @@ class _ExerciseCardState extends State<ExerciseCard> {
     });
   }
 
-  void endWorkout(DeviceHRViewModel deviceModel) {
+  void endWorkout(HRViewModel deviceModel) {
     setState(() {
       isWorkoutStarted = false;
       hrData = "No data"; // Reset HR data display
@@ -120,10 +121,10 @@ class _ExerciseCardState extends State<ExerciseCard> {
 
   @override
   Widget build(BuildContext context) {
-    Device device = widget.device;
+    DeviceScan device = widget.device;
     return ChangeNotifierProvider(
-      create: (context) => DeviceHRViewModel(device.name, device.serial),
-      child: Consumer<DeviceHRViewModel>(
+      create: (context) => HRViewModel(device.name, device.serial),
+      child: Consumer<HRViewModel>(
         builder: (context, deviceModel, child) {
           return Card(
             margin: EdgeInsets.all(8.0),
