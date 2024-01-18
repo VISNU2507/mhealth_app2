@@ -4,16 +4,16 @@ import 'package:mdsflutter/Mds.dart';
 import 'package:mhealth_app1/model/HRstorageModel.dart';
 // manager data og state for af specifik device, focusing on subscribing and handling heart rate
 
-class HRViewModel extends ChangeNotifier {
+class HRExerciseViewModel extends ChangeNotifier {
   String? _serial;
   String? _name;
   String? current_workout;
 
   String? get name => _name;
   String? get serial => _serial;
-  late Storage storage;
+  late HRStorage storage;
 
-  HRViewModel(this._name, this._serial);
+  HRExerciseViewModel(this._name, this._serial);
 
   StreamSubscription? _hrSubscription;
   String _hrData = ""; // store latest heartrate
@@ -26,7 +26,7 @@ class HRViewModel extends ChangeNotifier {
 
   void initStorage(String workout) {
     current_workout = workout;
-    storage = Storage(this);
+    storage = HRStorage(this);
     storage.init();
   }
 

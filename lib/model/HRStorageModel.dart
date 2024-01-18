@@ -11,8 +11,8 @@ import 'package:sembast/utils/sembast_import_export.dart';
 import 'dart:convert';
 
 /// Responsible for storing HR data to a Sembast database.
-class Storage {
-  HRViewModel monitor;
+class HRStorage {
+  HRExerciseViewModel monitor;
   StoreRef<int, Map<String, dynamic>>? store;
   Database? database;
   DumpManager? dumpManager;
@@ -22,7 +22,7 @@ class Storage {
 
   /// Initialize this storage by identifying which [monitor] it should save
   /// data for.
-  Storage(this.monitor);
+  HRStorage(this.monitor);
 
   /// Initialize the storage by opening the database and listening to HR events.
   Future<void> init() async {
@@ -97,7 +97,7 @@ class Storage {
 
 /// A manager that dumps the database to a JSON file on a regular basis.
 class DumpManager {
-  Storage storage;
+  HRStorage storage;
   Timer? dumper;
 
   DumpManager(this.storage);
@@ -113,7 +113,7 @@ class DumpManager {
 /// A manager that collects data from [storage] which has not been uploaded
 /// yet and uploads this on a regular basis.
 class UploadManager {
-  Storage storage;
+  HRStorage storage;
   Timer? uploadTimer;
 
   UploadManager(this.storage);

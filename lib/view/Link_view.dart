@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// This class represents a Flutter widget for a link page.
 class LinkPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

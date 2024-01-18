@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'Options_view.dart';
 import '../view_model/PincodeViewModel.dart';
 
+/// Represents a pin code input page for logging in.
 class PinCode extends StatelessWidget {
   final PincodeViewModel viewModel;
 

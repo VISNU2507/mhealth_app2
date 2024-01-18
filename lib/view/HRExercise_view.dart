@@ -4,7 +4,9 @@ import '../model/DeviceScanModel.dart';
 import '../view_model/HRExerciseViewModel.dart';
 import '../view_model/DeviceScanViewModel.dart';
 import 'Options_view.dart';
+import 'Athletes_view.dart';
 
+/// Represents a widget for displaying exercise options and data.
 class ExerciseOption extends StatefulWidget {
   // tager en Device objekt som en parameter
   final DeviceScan device;
@@ -16,6 +18,7 @@ class ExerciseOption extends StatefulWidget {
   }
 }
 
+/// Represents an exercise option card with data fields.
 class ExerciseOptionsPage extends State<ExerciseOption> {
   late DeviceScanViewModel _appModel;
 
@@ -48,6 +51,17 @@ class ExerciseOptionsPage extends State<ExerciseOption> {
         title: Text('Sessions'),
         backgroundColor: Color(0xFF15A196),
         actions: [
+          Padding(
+            padding: EdgeInsets.only(right: 20.0),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Icon(Icons.bluetooth_connected, size: 26.0),
+                SizedBox(width: 4),
+                Text('Bluetooth On', style: TextStyle(fontSize: 16)),
+              ],
+            ),
+          ),
           IconButton(
             icon: Icon(Icons.account_circle),
             onPressed: () {},
@@ -70,8 +84,19 @@ class ExerciseOptionsPage extends State<ExerciseOption> {
                 exerciseName: 'BENCH',
                 dataFields: ['Total reps', 'Total sets'],
                 device: device),
+            // Additional content here
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => AthleteListView()),
+          );
+        },
+        child: Icon(Icons.directions_run), // Runner icon representing athletes
+        backgroundColor: Color(0xFF15A196), // Background color of the button
       ),
     );
   }
@@ -97,7 +122,7 @@ class _ExerciseCardState extends State<ExerciseCard> {
   bool isWorkoutStarted = false;
   String hrData = "No data"; // Variable to hold HR data
 
-  void startWorkout(HRViewModel deviceModel, String workout) {
+  void startWorkout(HRExerciseViewModel deviceModel, String workout) {
     setState(() {
       isWorkoutStarted = true;
     });
@@ -111,7 +136,7 @@ class _ExerciseCardState extends State<ExerciseCard> {
     });
   }
 
-  void endWorkout(HRViewModel deviceModel) {
+  void endWorkout(HRExerciseViewModel deviceModel) {
     setState(() {
       isWorkoutStarted = false;
       hrData = "No data"; // Reset HR data display
@@ -123,8 +148,8 @@ class _ExerciseCardState extends State<ExerciseCard> {
   Widget build(BuildContext context) {
     DeviceScan device = widget.device;
     return ChangeNotifierProvider(
-      create: (context) => HRViewModel(device.name, device.serial),
-      child: Consumer<HRViewModel>(
+      create: (context) => HRExerciseViewModel(device.name, device.serial),
+      child: Consumer<HRExerciseViewModel>(
         builder: (context, deviceModel, child) {
           return Card(
             margin: EdgeInsets.all(8.0),

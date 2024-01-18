@@ -1,6 +1,9 @@
 import 'DeviceConnectionStatus.dart';
 
-// indkapsler data og status af en device (generel)
+/// Device Scan Model
+///
+/// Encapsulates data and status of a device. It includes fields for
+/// the device's address, name, serial number, and connection status.
 class DeviceScan {
   // store device adress, name og serial
   String? _address;

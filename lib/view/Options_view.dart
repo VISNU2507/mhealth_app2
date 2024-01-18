@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mhealth_app1/view_model/OptionsViewModel.dart';
 
+/// Represents the options page with various action tiles.
 class OptionsPage extends StatelessWidget {
   final OptionsViewModel viewModel = OptionsViewModel();
 
@@ -44,6 +45,7 @@ class OptionsPage extends StatelessWidget {
   }
 }
 
+/// Represents an option tile on the options page.
 class OptionTile extends StatelessWidget {
   final IconData icon;
   final String text;

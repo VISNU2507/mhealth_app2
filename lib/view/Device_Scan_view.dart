@@ -7,12 +7,13 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 import 'HRExercise_view.dart';
 
-class ScanWidget extends StatefulWidget {
+/// Represents a widget for scanning and connecting to devices.
+class DeviceScanWidget extends StatefulWidget {
   @override
-  _ScanWidgetState createState() => _ScanWidgetState();
+  _DeviceScanWidgetState createState() => _DeviceScanWidgetState();
 }
 
-class _ScanWidgetState extends State<ScanWidget> {
+class _DeviceScanWidgetState extends State<DeviceScanWidget> {
   late DeviceScanViewModel model;
   bool isLoading = false; // New state to track loading for a device
 

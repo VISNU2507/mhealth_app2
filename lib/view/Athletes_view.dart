@@ -1,3 +1,5 @@
+/// This class represents a Flutter widget for displaying a list of athletes.
+/// It extends StatelessWidget and is used to build the athlete list view.
 import 'package:flutter/material.dart';
 import 'package:mhealth_app1/view_model/AthleteViewModel.dart';
 import 'Pincode_view.dart';
@@ -33,8 +35,12 @@ class AthleteListView extends StatelessWidget {
   }
 }
 
+/// Represents an individual athlete tile in the athlete list view.
 class AthleteTile extends StatelessWidget {
+  /// The name of the athlete.
   final String athleteName;
+
+  /// The login code associated with the athlete.
   final String loginCode;
 
   AthleteTile({required this.athleteName, required this.loginCode});
