@@ -42,7 +42,46 @@ DV Health is a comprehensive fitness app designed to facilitate athletes and fit
 ### Entry Point
 - `main.dart`: The main.dart file serves as the entry point for the app. It defines the main MyApp widget, which initializes the app's theme and starts on the home page.
 
-## Code Examples
+
+## Software and Libraries Used
+
+### Flutter 3.13.3
+- We used Flutter as the framework for developing the user interface and logic of our application.
+
+### Flutter SDK 2.12.0
+- This is the Software Development Kit for Flutter, which provides the necessary tools for Flutter app development.
+
+### Dart 3.1.1
+- Dart is the programming language used for building Flutter apps, and we have used version 3.1.1 of Dart.
+
+### Windows 10
+- Our development environment was based on Windows 10.
+
+### Android Versions 9 and 10
+- These were the target devices for our application, and our implementation was tested on Android 9 and 10.
+
+### Supported Platforms
+- Our application is designed to run on Android devices and Windows PCs.
+
+### Movesense Library version 2.0.0
+- We incorporated the Movesense library to generate signals and collect data from Movesense sensors.
+
+### Permission Handler Library version 11.1.0
+- The Permission Handler library was used to manage permissions required by the application.
+
+### Python
+- We also used Python as part of our implementation.
+
+### Python Libraries - numpy and matplotlib
+- These Python libraries were employed to visualize the 12-hour data collection process, helping us verify the correctness of data collection.
+
+## Note
+
+Please be aware that our system has not been tested on iOS devices. It is optimized and intended for use on Android and Windows platforms.
+
+Thank you for using our software, and if you have any questions or encounter any issues, feel free to reach out to our support team.
+
+
 
 ### Important page (exercise:options_page)
 ```dart
