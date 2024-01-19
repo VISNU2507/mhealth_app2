@@ -9,7 +9,6 @@ class AthleteListViewModel {
     Athlete(name: 'Athlete 4', loginCode: '4321'),
     Athlete(name: 'Athlete 5', loginCode: '1234'),
     Athlete(name: 'Athlete 6', loginCode: '4321'),
-    // Add more athletes as needed
   ];
 
   // Add logic for manipulating athletes, such as adding, removing, or sorting athletes

@@ -1,9 +1,9 @@
-/// This class represents a Flutter widget for displaying a list of athletes.
-/// It extends StatelessWidget and is used to build the athlete list view.
 import 'package:flutter/material.dart';
 import 'package:mhealth_app1/view_model/AthleteViewModel.dart';
 import 'Pincode_view.dart';
 
+/// This class represents a Flutter widget for displaying a list of athletes.
+/// It extends StatelessWidget and is used to build the athlete list view.
 class AthleteListView extends StatelessWidget {
   final AthleteListViewModel viewModel = AthleteListViewModel();
 
@@ -13,12 +13,6 @@ class AthleteListView extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Color(0xFF15A196),
         title: Text('Health app'),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.filter_list),
-            onPressed: () {},
-          ),
-        ],
       ),
       body: Container(
         color: Color(0xFF15A196),
