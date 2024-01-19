@@ -8,7 +8,6 @@ class PincodeViewModel extends ChangeNotifier {
   PincodeViewModel(this._loginCode);
 
   bool isPinCorrect(String pin) {
-    // Here you could add more complex logic if necessary
     return pin == _loginCode || pin == '12';
   }
 

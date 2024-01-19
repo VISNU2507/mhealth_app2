@@ -58,13 +58,9 @@ class ExerciseOptionsPage extends State<ExerciseOption> {
               children: <Widget>[
                 Icon(Icons.bluetooth_connected, size: 26.0),
                 SizedBox(width: 4),
-                Text('Bluetooth On', style: TextStyle(fontSize: 16)),
+                Text('Bluetooth on', style: TextStyle(fontSize: 16)),
               ],
             ),
-          ),
-          IconButton(
-            icon: Icon(Icons.account_circle),
-            onPressed: () {},
           ),
         ],
       ),

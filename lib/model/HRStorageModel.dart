@@ -1,13 +1,12 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
-import '../view_model/HRExerciseViewModel.dart';
 import 'dart:async';
 import 'package:sembast/sembast.dart';
 import 'package:sembast/sembast_io.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:path/path.dart';
+import '../view_model/HRExerciseViewModel.dart';
 import 'package:sembast/utils/sembast_import_export.dart';
+import 'package:path/path.dart';
 import 'dart:convert';
 
 /// Responsible for storing HR data to a Sembast database.
