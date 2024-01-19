@@ -15,29 +15,101 @@ DV Health is a comprehensive fitness app designed to facilitate athletes and fit
 
 ### Main Components
 
-#### Model
-- `Device.dart`: This file defines the Device class, which encapsulates data and the status of a device. It includes methods to handle device connections and disconnections.
-- `DeviceConnectionStatus.dart`: This file contains an enumeration DeviceConnectionStatus that represents different device connection states, such as "NOT_CONNECTED," "CONNECTING," and "CONNECTED."
+## Model
 
-#### View
-- `athlete_list_page.dart`: This file defines the AthleteListPage widget, which displays a list of athletes. Each athlete is represented as an AthleteTile, and you can navigate to the login page for each athlete.
-  
-- `exercise_options_page.dart`: In this file, you'll find the ExerciseOption widget, which allows users to select exercise options based on the connected device. It also handles the start and end of workouts.
-  
-- `HR_data_page.dart`: This file defines the HRDataPage widget, which is intended to display heart rate data. However, it appears to be incomplete and doesn't contain specific functionality.
-  
-- `link_page.dart`: The LinkPage widget is defined in this file. It's a simple page with the title "Link" and a background color.
-  
-- `login_page.dart`: This file contains the LoginPage widget, which is used for user login. Users enter a PIN code, and if it matches the login code, they are navigated to the options page.
-  
-- `options_page.dart`: The OptionsPage widget is defined here. It serves as a central hub for navigating to different sections of the app, such as sessions, heart rate data, and links.
-  
-- `ScanWidget.dart`: This file defines the ScanWidget widget, which is responsible for scanning and connecting to devices. It lists available devices and allows users to start or stop scanning.
+### `AthletesModel.dart`
+- **Description**: Defines the `Athlete` class, representing athletes with a name and login code.
+- **Key Components**:
+  - `Athlete` class with properties `name` and `loginCode`.
+  - Methods for data validation or modification.
 
-#### View_model
-- `DeviceScanViewModel.dart`: The DeviceScanViewModel class manages the app's overall state, including the list of devices, scanning status, and device connections.
-  
-- `DeviceHRViewModel.dart`: Similar to DeviceScanViewModel, the DeviceHRViewModel.dart class manages data and state for a specific device, emphasizing heart rate data subscription and handling.
+### `DeviceConnectionStatus.dart`
+- **Description**: Enumerates the different states of device connection and provides a string representation for each state.
+- **Key Components**:
+  - `DeviceConnectionStatus` enum with values `NOT_CONNECTED`, `CONNECTING`, and `CONNECTED`.
+  - Extension method `statusName` for getting the string representation.
+
+### `HRExerciseModel.dart`
+- **Description**: Represents a heart rate (HR) exercise session including properties like name, serial, and current heart rate.
+- **Key Components**:
+  - `HRExerciseModel` class with methods to update heart rate.
+
+### `HRStorageModel.dart`
+- **Description**: Manages storage of HR data in a Sembast database.
+- **Key Components**:
+  - `HRStorage` class with methods for database initialization, data dumping, and uploading.
+
+## View
+
+### `Athletes_view.dart`
+- **Description**: Provides a Flutter widget for displaying a list of athletes.
+- **Key Components**:
+  - `AthleteListView` class extending `StatelessWidget`.
+  - `AthleteTile` class for individual athlete tiles.
+
+### `Device_Scan_View.dart`
+- **Description**: Widget for scanning and connecting to devices.
+- **Key Components**:
+  - `_DeviceScanWidgetState` class for managing the scanning state.
+  - UI components for displaying device list and connection status.
+
+### `HR_Storage_view.dart`
+- **Description**: Widget for viewing and managing heart rate data storage.
+- **Key Components**:
+  - `HRStorageView` class for managing HR files and displaying data.
+
+### `HRExercise_view.dart`
+- **Description**: Displays exercise options and data.
+- **Key Components**:
+  - `ExerciseOption` and `ExerciseOptionsPage` classes for managing exercise sessions.
+  - `ExerciseCard` class for individual exercise options.
+
+### `Link_view.dart`
+- **Description**: Widget for a link page related to heart rate calculations.
+- **Key Components**:
+  - `LinkPage` class with UI elements for heart rate calculation information.
+
+### `Options_view.dart`
+- **Description**: Options page with various action tiles.
+- **Key Components**:
+  - `OptionsPage` and `OptionTile` classes for displaying options.
+
+### `Pincode_view.dart`
+- **Description**: Pin code input page for logging in.
+- **Key Components**:
+  - `PinCode` class for pin code input and validation.
+
+## ViewModel
+
+### `AthleteViewModel.dart`
+- **Description**: Manages the list of athletes and their interactions.
+- **Key Components**:
+  - `AthleteListViewModel` class with a list of `Athlete` objects.
+
+### `DeviceScanViewModel.dart`
+- **Description**: Manages device scanning and connection status.
+- **Key Components**:
+  - `DeviceScanViewModel` class with methods for starting and stopping scans, connecting and disconnecting devices.
+
+### `HRExerciseViewModel.dart`
+- **Description**: Manages data and state for specific devices, focusing on subscribing and handling heart rate.
+- **Key Components**:
+  - `HRExerciseViewModel` class with methods for subscribing to HR data.
+
+### `HRStorageViewModel.dart`
+- **Description**: Manages the retrieval and display of stored HR data.
+- **Key Components**:
+  - `HRStorageViewModel` class with methods for finding and reading HR data files.
+
+### `OptionsViewModel.dart`
+- **Description**: Manages navigation to different pages based on user choices.
+- **Key Components**:
+  - `OptionsViewModel` class with methods for navigating to record session, HR data, and link pages.
+
+### `PincodeViewModel.dart`
+- **Description**: Manages the validation of pin code entries.
+- **Key Components**:
+  - `PincodeViewModel` class with a method for pin code validation.
 
 ### Entry Point
 - `main.dart`: The main.dart file serves as the entry point for the app. It defines the main MyApp widget, which initializes the app's theme and starts on the home page.
