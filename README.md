@@ -1,5 +1,5 @@
 # DV Health - Fitness App
-
+Made by Deniz and Visnu
 ![Screenshot](assets/running_man1.png)
 
 ## Overview
