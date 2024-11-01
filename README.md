@@ -1,7 +1,7 @@
 # DV Health - Fitness App
-Made by Deniz and Visnu
 ![Screenshot](assets/running_man1.png)
 
+Made by Deniz and Visnu
 ## Overview
 DV Health is a comprehensive fitness app designed to facilitate athletes and fitness enthusiasts in tracking and managing their health and exercise routines. The app's core functionality revolves around device connectivity, athlete management, session tracking, and health data analysis. Coaches can harness the power of DV Health to access athlete data, analyze performance metrics, and provide tailored guidance, ensuring athletes reach their peak performance. Welcome to a smarter way to train, compete, and succeed with DV Health.
 
